@@ -9,7 +9,7 @@ async def on_ready():
 	print("Bot is ready")
 
 @client.command()
-async def hello(ctx):
-	await ctx.send("Hi")
+async def help(ctx):
+	await ctx.send("```hello sir```")
 
 client.run(os.getenv('BOT_TOKEN'))
