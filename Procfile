@@ -1,2 +1,1 @@
-worker: python test.py
-worker: python modmail.py
+worker: python test.py modmail.py
