@@ -1,1 +1,1 @@
-worker: python test.py 
+worker: python test.py giveaway1.py
