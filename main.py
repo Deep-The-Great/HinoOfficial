@@ -3,6 +3,7 @@
 from discord.ext import tasks
 from itertools import cycle
 import discord
+import os
 import datetime
 import asyncio
 from discord.ext import commands
