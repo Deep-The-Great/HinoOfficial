@@ -43,6 +43,7 @@ async def help(ctx):
 
     embed.set_author(name='CATEGORY LIST')
 
+    embed.add_field(name='Prefix is ```h!```', value="", inline=False
     embed.add_field(name='**MODERATION CATEGORY**', value="```purge (amount) | kick (user) | ban (user) | unban (user) | nuke | addrole (user) (role name) | removerole (user) (role name) |```", inline=False)
     embed.add_field(name='**TICKET CATEGORY', value='```setupticket | openticket | closeticket | (openticket and closeticket commands will work when ticket setup has completed)```', inline=False)
     embed.add_field(name='**FUN**', value='```howgay (user) | cat | meme |```', inline=False)
@@ -204,7 +205,7 @@ async def _howgay (ctx, *, person):
 async def _howgay_error(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
         embed = discord.Embed(colour= discord.Colour.red())
-        embed.add_field(name=':x: **Howgay Error**\n', value=' ㅤ\n``.howgay {mention}``', inline=False)
+        embed.add_field(name=':x: **Howgay Error**\n', value=' ㅤ\n``howgay {mention}``', inline=False)
         embed.set_footer(text='Made by Team Hino')
 
         await ctx.send(embed = embed)
@@ -222,7 +223,7 @@ async def purge(ctx, amount : int):
 async def _purge_error(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
       embed = discord.Embed(colour=discord.Colour.red())
-      embed.add_field(name=':x: **Purge Error**\n', value=' ㅤ\n``.purge {amount}``', inline=False)
+      embed.add_field(name=':x: **Purge Error**\n', value=' ㅤ\n``purge {amount}``', inline=False)
       embed.set_footer(text='Made by Team Hino')
 
       await ctx.send(embed = embed)
@@ -244,7 +245,7 @@ async def kick(ctx,member : discord.Member , * , reason=None):
 async def kick_error(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
         embed = discord.Embed(colour=discord.Colour.red())
-        embed.add_field(name=':x: **Kick Error**\n', value=' ㅤ\n``.kick {@mention}``', inline=False)
+        embed.add_field(name=':x: **Kick Error**\n', value=' ㅤ\n``kick {@mention}``', inline=False)
         embed.set_footer(text='Made by Team Hino')
 
         await ctx.send(embed=embed)
@@ -264,7 +265,7 @@ async def ban(ctx, member : discord.Member , * , reason=None):
 async def ban_error(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
         embed = discord.Embed(colour=discord.Colour.red())
-        embed.add_field(name=':x: **Ban Error**\n', value=' ㅤ\n``.ban {@mention}``', inline=False)
+        embed.add_field(name=':x: **Ban Error**\n', value=' ㅤ\n``ban {@mention}``', inline=False)
         embed.set_footer(text='Made by Team Hino')
 
         await ctx.send(embed=embed)
@@ -297,7 +298,7 @@ async def unban(ctx, *, member):
 async def unban_error(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
         embed = discord.Embed(colour=discord.Colour.red())
-        embed.add_field(name=':x: **Unban Error**\n', value=' ㅤ\n``.unban {user#}``', inline=False)
+        embed.add_field(name=':x: **Unban Error**\n', value=' ㅤ\n``unban {user#}``', inline=False)
         embed.set_footer(text='Made by Team Hino')
 
 
@@ -317,7 +318,7 @@ async def say(ctx, *, say):
 async def say_error(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
         embed = discord.Embed(colour=discord.Colour.red())
-        embed.add_field(name=':x: **Say Error**\n', value=' ㅤ\n``.say {something}``', inline=False)
+        embed.add_field(name=':x: **Say Error**\n', value=' ㅤ\n``say {something}``', inline=False)
         embed.set_footer(text='Made by Team Hino')
 
         await ctx.send(embed=embed)
@@ -349,7 +350,7 @@ async def addrole(ctx, user: discord.Member, mention):
 async def addrole_error(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
         embed = discord.Embed(colour=discord.Colour.red())
-        embed.add_field(name=':x: **Addrole Error**\n', value=' ㅤ\n``.addrole {@role}+{@mention}``', inline=False)
+        embed.add_field(name=':x: **Addrole Error**\n', value=' ㅤ\n``addrole {@role}+{@mention}``', inline=False)
         embed.set_footer(text='Made by Team Hino')
 
         await ctx.send(embed=embed)
@@ -367,7 +368,7 @@ async def removerole(ctx, user: discord.Member, mention):
 async def removerole_error(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
         embed = discord.Embed(colour=discord.Colour.red())
-        embed.add_field(name=':x: **Removerole Error**\n', value=' ㅤ\n``.removerole {@role}+{@mention}``', inline=False)
+        embed.add_field(name=':x: **Removerole Error**\n', value=' ㅤ\n``removerole {@role}+{@mention}``', inline=False)
         embed.set_footer(text='Made by Team Hino')
 
         await ctx.send(embed=embed)
@@ -417,7 +418,7 @@ async def openticket(ctx, *, content):
 async def openticket_error(ctx, error):
     embed = discord.Embed(colour=discord.Colour.red())
     if isinstance(error, commands.MissingRequiredArgument):
-        embed.add_field(name=':x: **Ticket Error**\n', value=' ㅤ\n``.ticket {Reason/Subject}``', inline=False)
+        embed.add_field(name=':x: **Ticket Error**\n', value=' ㅤ\n``ticket {Reason/Subject}``', inline=False)
         embed.set_footer(text='Made by Team Hino')
 
         await ctx.send(embed=embed)
