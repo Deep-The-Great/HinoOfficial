@@ -44,7 +44,7 @@ async def help(ctx):
     embed.set_author(name='CATEGORY LIST')
 
     embed.add_field(name='Prefix is ```h!```', value="", inline=False
-    embed.add_field(name='**MODERATION CATEGORY**', value="```purge (amount) | kick (user) | ban (user) | unban (user) | nuke | addrole (user) (role name) | removerole (user) (role name) |```", inline=False)
+    embed.add_field(name='**MODERATION CATEGORY**', value='```purge (amount) | kick (user) | ban (user) | unban (user) | nuke | addrole (user) (role name) | removerole (user) (role name) |```', inline=False)
     embed.add_field(name='**TICKET CATEGORY', value='```setupticket | openticket | closeticket | (openticket and closeticket commands will work when ticket setup has completed)```', inline=False)
     embed.add_field(name='**FUN**', value='```howgay (user) | cat | meme |```', inline=False)
     embed.add_field(name='**OTHER**', value='```say (message) | invite | giveaway |```')
