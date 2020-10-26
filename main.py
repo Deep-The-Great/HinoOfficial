@@ -44,7 +44,7 @@ async def help(ctx):
     embed.set_author(name='CATEGORY LIST')
 
     embed.add_field(name='**MODERATION CATEGORY**', value='```purge (amount) | kick (user) | ban (user) | unban (user) | nuke | addrole (user) (role name) | removerole (user) (role name) |```', inline=False)
-    embed.add_field(name='**TICKET CATEGORY', value='```setupticket | openticket | closeticket | (openticket and closeticket commands will work when ticket setup has completed)```', inline=False)
+    embed.add_field(name='**TICKET CATEGORY**', value='```setupticket | openticket | closeticket | (openticket and closeticket commands will work when ticket setup has completed)```', inline=False)
     embed.add_field(name='**FUN**', value='```howgay (user) | cat | meme |```', inline=False)
     embed.add_field(name='**OTHER**', value='```say (message) | invite | giveaway |```')
     #embed.add_field(name='**ADMIN**', value='```invite |```')
@@ -143,13 +143,13 @@ async def giveaway(ctx):
 
 @giveaway.error
 async def giveaway_error(ctx, error):
-    if isinstance(error, commands.MissingRequiredArgument):
+    if isinstance(error, commands.CheckFailure):
         embed = discord.Embed(colour= discord.Colour.red())
-        embed.add_field(name=':x: **Cannot completed**\n', value='You need role called Giveaways', inline=False)
+        embed.add_field(name=':x: **Giveaway Error**\n', value='You need role called Giveaways to perform this action', inline=False)
         embed.set_footer(text='Made by Team Hino')
 
         await ctx.send(embed = embed)
-
+        
 # Setup ticket
 
 @client.command(pass_content = True)
@@ -246,6 +246,11 @@ async def kick_error(ctx, error):
         embed = discord.Embed(colour=discord.Colour.red())
         embed.add_field(name=':x: **Kick Error**\n', value=' ㅤ\n``kick {@mention}``', inline=False)
         embed.set_footer(text='Made by Team Hino')
+     
+    elif isinstance(error, commands.CheckFailure):
+        embed = discord.Embed(colour=discord.Colour.red())
+        embed.add_field(name=':x: **Kick Error**\n', value=' ㅤ\n``You dont have permission to perform this action``', inline=False)
+        embed.set_footer(text='Made by Team Hino')
 
         await ctx.send(embed=embed)
 
@@ -266,7 +271,12 @@ async def ban_error(ctx, error):
         embed = discord.Embed(colour=discord.Colour.red())
         embed.add_field(name=':x: **Ban Error**\n', value=' ㅤ\n``ban {@mention}``', inline=False)
         embed.set_footer(text='Made by Team Hino')
-
+    
+    elif isinstance(error, commands.CheckFailure):
+        embed = discord.Embed(colour=discord.Colour.red())
+        embed.add_field(name=':x: **Purge Error**\n', value=' ㅤ\n``You dont have permission to perform this action``', inline=False)
+        embed.set_footer(text='Made by Team Hino') 
+    
         await ctx.send(embed=embed)
 
 @client.command(pass_context=True)
@@ -299,8 +309,12 @@ async def unban_error(ctx, error):
         embed = discord.Embed(colour=discord.Colour.red())
         embed.add_field(name=':x: **Unban Error**\n', value=' ㅤ\n``unban {user#}``', inline=False)
         embed.set_footer(text='Made by Team Hino')
-
-
+    
+    elif isinstance(error, commands.CheckFailure):
+        embed = discord.Embed(colour=discord.Colour.red())
+        embed.add_field(name=':x: **Unban Error**\n', value=' ㅤ\n``You dont have permission to perform this action``', inline=False)
+        embed.set_footer(text='Made by Team Hino') 
+        
         await ctx.send(embed=embed)
 
 #say
@@ -335,6 +349,17 @@ async def nuke(ctx):
     await channel.delete()
     await new_channel.send("Nuked this channel.\nhttps://imgur.com/LIyGeCR")
 
+@nuke.error
+async def nuke_error(ctx, error):
+    if isinstance(error, commands.CheckFailure):
+        embed = discord.Embed(colour=discord.Colour.red())
+        embed.add_field(name=':x: **Nuke Error**\n', value=' ㅤ\n``You dont have permission to perform this action``', inline=False)
+        embed.set_footer(text='Made by Team Hino') 
+        
+        await ctx.send(embed=embed)
+
+    
+
 
 # Add Role
 
@@ -351,7 +376,12 @@ async def addrole_error(ctx, error):
         embed = discord.Embed(colour=discord.Colour.red())
         embed.add_field(name=':x: **Addrole Error**\n', value=' ㅤ\n``addrole {@role}+{@mention}``', inline=False)
         embed.set_footer(text='Made by Team Hino')
-
+    
+    elif isinstance(error, commands.CheckFailure):
+        embed = discord.Embed(colour=discord.Colour.red())
+        embed.add_field(name=':x: ** Addrole Error**\n', value=' ㅤ\n``You dont have permission to perform this action``', inline=False)
+        embed.set_footer(text='Made by Team Hino') 
+        
         await ctx.send(embed=embed)
 
 # Remove Role
@@ -369,6 +399,11 @@ async def removerole_error(ctx, error):
         embed = discord.Embed(colour=discord.Colour.red())
         embed.add_field(name=':x: **Removerole Error**\n', value=' ㅤ\n``removerole {@role}+{@mention}``', inline=False)
         embed.set_footer(text='Made by Team Hino')
+    
+    elif isinstance(error, commands.CheckFailure):
+        embed = discord.Embed(colour=discord.Colour.red())
+        embed.add_field(name=':x: **Unban Error**\n', value='\n``You dont have permission to perform this action``', inline=False)
+        embed.set_footer(text='Made by Team Hino') 
 
         await ctx.send(embed=embed)
 
