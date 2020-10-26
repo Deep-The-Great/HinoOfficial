@@ -224,8 +224,12 @@ async def _purge_error(ctx, error):
       embed = discord.Embed(colour=discord.Colour.red())
       embed.add_field(name=':x: **Purge Error**\n', value=' ㅤ\n``purge {amount}``', inline=False)
       embed.set_footer(text='Made by Team Hino')
+    elif isinstance(error, commands.CheckFailure):
+        embed = discord.Embed(colour=discord.Colour.red())
+        embed.add_field(name=':x: **Purge Error**\n', value=' ㅤ\n``You dont have permission to perform this action``', inline=False)
+        embed.set_footer(text='Made by Team Hino')
 
-      await ctx.send(embed = embed)
+        await ctx.send(embed = embed)
 
 
 
