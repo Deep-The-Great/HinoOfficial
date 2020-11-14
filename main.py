@@ -46,11 +46,10 @@ async def help(ctx):
 
     embed.set_author(name='CATEGORY LIST')
 
-    embed.add_field(name='**MODERATION CATEGORY**', value='', inline=False)
-    embed.add_field(name='**TICKET CATEGORY**', value='', inline=False)
-    embed.add_field(name='**FUN**', value='', inline=False)
-    embed.add_field(name='**OTHER**', value='', inline=False)
-    embed.add_field(name='Type h!help (category-name) for more details and commands', value='')
+    embed.add_field(name='**MODERATION CATEGORY**', value='Type h!help moderation for more details', inline=False)
+    embed.add_field(name='**TICKET CATEGORY**', value='Type h!help ticket for more details', inline=False)
+    embed.add_field(name='**FUN**', value='Type h!help fun for more details', inline=False)
+    embed.add_field(name='**OTHER**', value='Type h!help other for more details', inline=False)
     #embed.add_field(name='**ADMIN**', value='```invite |```')
     embed.set_footer(text='Made by Team Hino')
 
