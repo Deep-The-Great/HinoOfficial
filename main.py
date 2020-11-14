@@ -46,10 +46,11 @@ async def help(ctx):
 
     embed.set_author(name='CATEGORY LIST')
 
-    embed.add_field(name='**MODERATION CATEGORY**', value='```purge | kick | ban | unban (user) | nuke | addrole (user) (role name) | removerole (user) (role name) |```', inline=False)
-    embed.add_field(name='**TICKET CATEGORY**', value='```setupticket | openticket | closeticket | (openticket and closeticket commands will work when ticket setup has completed)```', inline=False)
-    embed.add_field(name='**FUN**', value='```howgay (user) | cat | meme |```', inline=False)
-    embed.add_field(name='**OTHER**', value='```say (message) | invite | giveaway |```')
+    embed.add_field(name='**MODERATION CATEGORY**', value='', inline=False)
+    embed.add_field(name='**TICKET CATEGORY**', value='', inline=False)
+    embed.add_field(name='**FUN**', value='', inline=False)
+    embed.add_field(name='**OTHER**', value='', inline=False)
+    embed.add_field(name='Type h!help (category-name) for more details and commands', value='')
     #embed.add_field(name='**ADMIN**', value='```invite |```')
     embed.set_footer(text='Made by Team Hino')
 
