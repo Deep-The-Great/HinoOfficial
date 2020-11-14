@@ -37,20 +37,60 @@ async def invite(ctx):
 
 # Help
 client.remove_command('help')
-@client.command()
+@client.group(invoke_without_command=True)
 async def help(ctx):
     embed = discord.Embed(colour=discord.Colour.green())
 
     embed.set_author(name='CATEGORY LIST')
 
-    embed.add_field(name='**MODERATION CATEGORY**', value='```purge (amount) | kick (user) | ban (user) | unban (user) | nuke | addrole (user) (role name) | removerole (user) (role name) |```', inline=False)
+    embed.add_field(name='**MODERATION CATEGORY**', value='```purge | kick | ban | unban (user) | nuke | addrole (user) (role name) | removerole (user) (role name) |```', inline=False)
     embed.add_field(name='**TICKET CATEGORY**', value='```setupticket | openticket | closeticket | (openticket and closeticket commands will work when ticket setup has completed)```', inline=False)
     embed.add_field(name='**FUN**', value='```howgay (user) | cat | meme |```', inline=False)
-    embed.add_field(name='**OTHER**', value='```say (message) | invite |```')
+    embed.add_field(name='**OTHER**', value='```say (message) | invite | giveaway |```')
     #embed.add_field(name='**ADMIN**', value='```invite |```')
     embed.set_footer(text='Made by Team Hino')
 
     await ctx.send(embed=embed)
+
+@help.command()
+async def moderation(ctx):
+    embed = discord.Embed(colour=discord.Colour.green())
+    embed.add_field(name = "purge (no.)", value = "Clear the text in channel in server")
+    embed.add_field(name = "kick (user)", value = "Kick the user from the server")
+    embed.add_field(name = "ban (user)", value = "Ban the user from the server")
+    embed.add_field(name = "Unban (user)[only name no @ sign]", value = "Unban the user from the server" )
+    embed.add_field(name = "nuke", value = "Nuke a channel in the server")
+    embed.add_field(name = "addrole (user) (role-name)", value = "Add a role to a mention user")
+    embed.add_field(name = "removerole (user) (role-name)", value = "Remove a role from a user")
+
+    await ctx.send(embed=embed)
+
+@help.command()
+async def ticket(ctx):
+    embed = discord.Embed(colour=discord.Colour.green())
+    embed.add_field(name = "setupticket", value = "Setup the ticket by the bot")
+    embed.add_field(name = "openticket", value = "Open a ticket for purpose")
+    embed.add_field(name = "closeticket", value = "Close a ticket")
+
+    await ctx.send(embed=embed)
+
+@help.command()
+async def fun(ctx):
+    embed = discord.Embed(colour=discord.Colour.green())
+    embed.add_field(name = "howgay (user)", value = "Howgay the user" )
+    embed.add_field(name = "cat", value = "Send a random picture of Cat")
+    embed.add_field(name = "meme", value = "Send a random meme")
+
+    await ctx.send(embed=embed)
+
+@help.command()
+async def other(ctx):
+    embed = discord.Embed(colour=discord.Colour.green())
+    embed.add_field(name = "say (message)", value = "Send the message mentioned by the user")
+    embed.add_field(name = "invite", value = "Invite the bot to your server")
+
+    await ctx.send(embed=embed)
+   
 
 
         
